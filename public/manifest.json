@@ -1,0 +1,19 @@
+{
+  "name": "Usability Testing Extension",
+  "description": "This extension is used to help do usability testing.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://bluprinthink.id/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "permissions": ["storage", "tabs"]
+}
