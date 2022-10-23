@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./index.css";
+import Button from "@mui/material/Button";
 
 const AppPopup = () => {
   const dispatch = useDispatch();
@@ -16,12 +17,12 @@ const AppPopup = () => {
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit mollitia
         rerum ex quibusdam, laboriosam pariatur.
       </p>
-      <button
+      <Button
         onClick={clickHandler}
         className="py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-700"
       >
         Start
-      </button>
+      </Button>
     </div>
   );
 };

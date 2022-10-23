@@ -32,8 +32,7 @@ const App = () => {
 
   useEffect(() => {
     console.log(data);
-    console.table(identity);
-  }, [data, identity]);
+  }, [data]);
 
   return (
     <Card>
@@ -58,18 +57,13 @@ const App = () => {
             </Fragment>
           )}
           {page === 1 && <Identity />}
-          {page >= 2 && <Question question={QuesionList[page - 1]} />}
+          {page >= 2 && (
+            <Question
+              question={QuesionList[page - 2]}
+              nextButton={nextButton}
+            />
+          )}
           <div className="flex gap-3 justify-end">
-            {page >= 2 ? (
-              <Button
-                variant="contained"
-                className="text-white rounded-lg"
-                color="success"
-                onClick={nextButton}
-              >
-                Next step
-              </Button>
-            ) : null}
             {page === 0 ? (
               <Button
                 variant="contained"

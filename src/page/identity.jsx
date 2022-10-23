@@ -30,9 +30,9 @@ const Identity = () => {
     formData.append("umur", values.umur);
     formData.append("kelamin", values.kelamin);
 
-    fetch(url, { method: "POST", body: formData })
-      .then((response) => console.log("Success!", response))
-      .catch((error) => console.error("Error!", error.message));
+    // fetch(url, { method: "POST", body: formData })
+    //   .then((response) => console.log("Success!", response))
+    //   .catch((error) => console.error("Error!", error.message));
 
     dispatch({ type: "identity", identity: values });
   };

@@ -77,8 +77,6 @@ const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDial
     }
 
     if (action.type === 'timer') {
-        const time = Date.now();
-        chrome.action.setBadgeText({ text: (state.timer + 1).toString() });
         return {
             counter: state.counter,
             timer: state.timer + 1,
