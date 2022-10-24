@@ -42,7 +42,7 @@ const Identity = () => {
   };
 
   return (
-    <form className="flex flex-col gap-3 w-full" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-3 w-96" onSubmit={onSubmit}>
       <TextField
         variant="outlined"
         label="Nama"

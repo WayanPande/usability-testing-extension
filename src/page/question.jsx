@@ -35,7 +35,7 @@ const Question = (props) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-96">
       <h1>Perintah {question.id}</h1>
       <p>{question.title}</p>
       {!isFinished && (

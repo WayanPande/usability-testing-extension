@@ -7,13 +7,13 @@ import QuesionList from "./util/questionList.js";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Identity from "./page/identity.jsx";
+import Questionnaire from "./page/questionnaire.jsx";
 
 const App = () => {
   const page = useSelector((state) => state.page);
-  const identity = useSelector((state) => state.identity);
+  const questionnaire = useSelector((state) => state.questionnaire);
   const timer = useSelector((state) => state.timer);
   const counter = useSelector((state) => state.counter);
-  const isReady = useSelector((state) => state.isReady);
   const data = useSelector((state) => state.data);
   const showDialog = useSelector((state) => state.showDialog);
   const dispatch = useDispatch();
@@ -31,38 +31,45 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    console.table(questionnaire);
+  }, [questionnaire]);
 
   return (
     <Card>
       {showDialog && (
-        <div className="p-6 w-96 flex flex-col gap-3 text-black">
+        <div className="p-6 flex flex-col gap-3 text-black">
           <div className="flex flex-row justify-between">
             <h1 className="font-bold">
               {page === 0 && "Scenario"}
-              {page >= 2 && `Step ${page - 1} of 10`}
+              {page >= 2 &&
+                page !== QuesionList.length + 2 &&
+                `Step ${page - 1} of ${QuesionList.length}`}
               {page === 1 && "Identitas Peserta"}
+              {page === QuesionList.length + 2 && "Questionnnaire Akhir"}
             </h1>
-            {page >= 2 ? <p>{FormatTime(timer)}</p> : null}
+            {page >= 2 && page !== QuesionList.length + 2 ? (
+              <p>{FormatTime(timer)}</p>
+            ) : null}
           </div>
           <hr />
           {page === 0 && (
-            <Fragment>
+            <div className="w-96">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Possimus officiis nisi sunt? Dolorem unde, eveniet deserunt modi
                 rem ducimus natus!
               </p>
-            </Fragment>
+            </div>
           )}
           {page === 1 && <Identity />}
-          {page >= 2 && (
+          {page >= 2 && page !== QuesionList.length + 2 && (
             <Question
               question={QuesionList[page - 2]}
               nextButton={nextButton}
             />
           )}
+          {page === QuesionList.length + 2 && <Questionnaire />}
+          {/* <Questionnaire /> */}
           <div className="flex gap-3 justify-end">
             {page === 0 ? (
               <Button

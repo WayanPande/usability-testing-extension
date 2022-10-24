@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 import { wrapStore } from 'webext-redux';
 
-const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDialog: false, data: [], page: 0, identity: {} }, action) => {
+const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDialog: false, data: [], page: 0, identity: {}, questionnaire: {} }, action) => {
     if (action.type === 'click') {
         return {
             counter: state.isReady && state.counter + 1,
@@ -10,7 +10,8 @@ const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDial
             showDialog: state.showDialog,
             data: [...state.data],
             page: state.page,
-            identity: { ...state.identity }
+            identity: { ...state.identity },
+            questionnaire: { ...state.questionnaire }
         }
     }
 
@@ -22,7 +23,21 @@ const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDial
             showDialog: state.showDialog,
             data: [...state.data],
             page: state.page + 1,
-            identity: action.identity
+            identity: action.identity,
+            questionnaire: { ...state.questionnaire }
+        }
+    }
+
+    if (action.type === 'questionnaire') {
+        return {
+            counter: state.counter,
+            timer: state.timer,
+            isReady: state.isReady,
+            showDialog: state.showDialog,
+            data: [...state.data],
+            page: state.page,
+            identity: { ...state.identity },
+            questionnaire: action.questionnaire
         }
     }
 
@@ -34,7 +49,8 @@ const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDial
             showDialog: state.showDialog,
             data: [...state.data],
             page: state.page + 1,
-            identity: { ...state.identity }
+            identity: { ...state.identity },
+            questionnaire: { ...state.questionnaire }
         }
     }
 
@@ -46,7 +62,8 @@ const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDial
             showDialog: state.showDialog,
             data: [...state.data],
             page: state.page,
-            identity: { ...state.identity }
+            identity: { ...state.identity },
+            questionnaire: { ...state.questionnaire }
         }
     }
 
@@ -59,7 +76,8 @@ const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDial
             showDialog: state.showDialog,
             data: [...state.data, action.data],
             page: state.page,
-            identity: { ...state.identity }
+            identity: { ...state.identity },
+            questionnaire: { ...state.questionnaire }
         }
     }
 
@@ -72,7 +90,8 @@ const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDial
             showDialog: !state.showDialog,
             data: [...state.data],
             page: state.page,
-            identity: { ...state.identity }
+            identity: { ...state.identity },
+            questionnaire: { ...state.questionnaire }
         }
     }
 
@@ -84,7 +103,8 @@ const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDial
             showDialog: state.showDialog,
             data: [...state.data],
             page: state.page,
-            identity: { ...state.identity }
+            identity: { ...state.identity },
+            questionnaire: { ...state.questionnaire }
         }
     }
 
