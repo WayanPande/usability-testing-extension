@@ -8,20 +8,22 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Identity from "./page/identity.jsx";
 import Questionnaire from "./page/questionnaire.jsx";
+import CheckTask from "./util/checkTask.js";
 
-const App = () => {
+const App = (props) => {
   const page = useSelector((state) => state.page);
-  const questionnaire = useSelector((state) => state.questionnaire);
+  const isReady = useSelector((state) => state.isReady);
   const timer = useSelector((state) => state.timer);
   const counter = useSelector((state) => state.counter);
   const data = useSelector((state) => state.data);
   const showDialog = useSelector((state) => state.showDialog);
   const dispatch = useDispatch();
 
-  const nextButton = () => {
+  const nextButton = (isSkipped = false) => {
     const hasil = {
       time: timer,
       click: counter,
+      skip: isSkipped,
     };
     // console.log(hasil);
     dispatch({ type: "page" });
@@ -30,9 +32,16 @@ const App = () => {
     }
   };
 
+  const successHandler = () => {
+    dispatch({ type: "ready" });
+    nextButton();
+  };
+
   useEffect(() => {
-    console.table(questionnaire);
-  }, [questionnaire]);
+    if (isReady) {
+      CheckTask(page, successHandler);
+    }
+  }, [isReady, page, counter]);
 
   return (
     <Card>

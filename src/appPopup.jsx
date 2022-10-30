@@ -7,6 +7,7 @@ const AppPopup = () => {
   const dispatch = useDispatch();
 
   const clickHandler = () => {
+    // window.open("https://bluprinthink.id/", "_blank");
     dispatch({ type: "dialog" });
   };
 

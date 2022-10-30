@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
@@ -20,20 +20,6 @@ const Identity = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    const url =
-      "https://script.google.com/macros/s/AKfycbwsCu0S5z0Zu6EZ-ZKkh-uoGlERvpJsITJ11ngjOOdQnRU1V1_AG1ntbGHv7pQozzs/exec";
-    let formData = new FormData();
-
-    formData.append("nama", values.nama);
-    formData.append("email", values.email);
-    formData.append("umur", values.umur);
-    formData.append("kelamin", values.kelamin);
-
-    // fetch(url, { method: "POST", body: formData })
-    //   .then((response) => console.log("Success!", response))
-    //   .catch((error) => console.error("Error!", error.message));
-
     dispatch({ type: "identity", identity: values });
   };
 
@@ -46,21 +32,21 @@ const Identity = () => {
       <TextField
         variant="outlined"
         label="Nama"
-        inputProps={{ "aria-label": "nama" }}
+        inputprops={{ "aria-label": "nama" }}
         onChange={handleChange("nama")}
       />
       <TextField
         variant="outlined"
         label="Email"
         type={"email"}
-        inputProps={{ "aria-label": "email" }}
+        inputprops={{ "aria-label": "email" }}
         onChange={handleChange("email")}
       />
       <TextField
         variant="outlined"
         label="Umur"
         type={"number"}
-        inputProps={{ "aria-label": "umur" }}
+        inputprops={{ "aria-label": "umur" }}
         onChange={handleChange("umur")}
       />
       <FormControl>
@@ -72,7 +58,7 @@ const Identity = () => {
           aria-labelledby="demo-row-radio-buttons-group-label"
           name="row-radio-buttons-group"
           value={values.kelamin}
-          inputProps={{ "aria-label": "kelamin" }}
+          inputprops={{ "aria-label": "kelamin" }}
           onChange={handleChange("kelamin")}
         >
           <FormControlLabel value="L" control={<Radio />} label="Laki - Laki" />

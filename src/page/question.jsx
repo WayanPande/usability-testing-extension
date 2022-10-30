@@ -30,30 +30,41 @@ const Question = (props) => {
     dispatch({ type: "ready" });
   };
 
+  const skipHandler = () => {
+    dispatch({ type: "ready" });
+    props.nextButton(true);
+  };
+
   const readyHandler = () => {
     dispatch({ type: "ready" });
   };
 
   return (
     <div className="flex flex-col w-96">
-      <h1>Perintah {question.id}</h1>
-      <p>{question.title}</p>
+      <h1>{question.title}</h1>
       {!isFinished && (
-        <Button
-          variant="contained"
-          color={isReady ? "error" : "info"}
-          className="rounded-md bg-blue-300 hover:bg-blue-500 py-2 mt-4 font-bold"
-          onClick={isReady ? finishHandler : readyHandler}
-        >
-          {isReady ? "Finish" : "Start"}
-        </Button>
+        <div className="flex items-end justify-between justify-items-end">
+          {isReady && (
+            <Button variant="outlined" onClick={skipHandler}>
+              Skip
+            </Button>
+          )}
+          <Button
+            variant="contained"
+            color={isReady ? "error" : "info"}
+            className="rounded-md bg-blue-300 hover:bg-blue-500 py-2 mt-4 font-bold"
+            onClick={isReady ? finishHandler : readyHandler}
+          >
+            {isReady ? "Finish" : "Start"}
+          </Button>
+        </div>
       )}
       {isFinished && (
         <Button
           variant="contained"
           className="text-white rounded-lg py-2 mt-4 font-bold"
           color="success"
-          onClick={props.nextButton}
+          onClick={() => props.nextButton()}
         >
           Next step
         </Button>

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import QuestionnaireRadio from "../components/questionnaireForm.jsx";
 import Button from "@mui/material/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Questionnaire = () => {
+  const identity = useSelector((state) => state.identity);
+  const data = useSelector((state) => state.data);
+
   const [values, setValues] = useState({
     question_1: "",
     question_2: "",
@@ -25,6 +28,27 @@ const Questionnaire = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "questionnaire", questionnaire: values });
+    uploadData();
+  };
+
+  const uploadData = () => {
+    alert("Pengujian Selesai");
+    const url =
+      "https://script.google.com/macros/s/AKfycbwsCu0S5z0Zu6EZ-ZKkh-uoGlERvpJsITJ11ngjOOdQnRU1V1_AG1ntbGHv7pQozzs/exec";
+    let formData = new FormData();
+
+    formData.append("nama", identity.nama);
+    formData.append("email", identity.email);
+    formData.append("umur", identity.umur);
+    formData.append("kelamin", identity.kelamin);
+    formData.append("hasil_pengujian", JSON.stringify(data));
+    formData.append("questionnaire", JSON.stringify(values));
+
+    fetch(url, { method: "POST", body: formData })
+      .then((response) => console.log("Success!", response))
+      .catch((error) => console.error("Error!", error.message));
+
+    dispatch({ type: "dialog" });
   };
 
   return (
