@@ -41,7 +41,7 @@ const App = (props) => {
     if (isReady) {
       CheckTask(page, successHandler);
     }
-  }, [isReady, page, counter]);
+  }, [isReady, page]);
 
   return (
     <Card>

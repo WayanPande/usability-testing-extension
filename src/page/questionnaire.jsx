@@ -53,7 +53,7 @@ const Questionnaire = () => {
 
   return (
     <form
-      className="flex flex-col h-96 gap-3 overflow-y-scroll px-3"
+      className="flex flex-col h-96 gap-9 overflow-y-scroll px-3"
       onSubmit={handleSubmit}
     >
       <QuestionnaireRadio

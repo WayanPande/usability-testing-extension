@@ -12,44 +12,54 @@ const QuestionnaireRadio = (props) => {
         id="demo-row-radio-buttons-group-label"
         className="font-semibold"
       >
-        {props.question}
+        <b className="text-lg">{props.question}</b>
       </FormLabel>
       <RadioGroup
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
-        inputProps={{ "aria-label": props.type }}
+        inputprops={{ "aria-label": props.type }}
         onChange={props.handleChange(props.type)}
       >
         <FormControlLabel
           value="1"
-          labelPlacement="top"
+          labelPlacement="bottom"
           control={<Radio />}
-          label="STS"
+          label={
+            <div className="text-center">
+              <p>1</p>
+              <p>Sangat Tidak Setuju</p>
+            </div>
+          }
         />
         <FormControlLabel
           value="2"
-          labelPlacement="top"
+          labelPlacement="bottom"
           control={<Radio />}
-          label="TS"
+          label="2"
         />
         <FormControlLabel
           value="3"
-          labelPlacement="top"
+          labelPlacement="bottom"
           control={<Radio />}
-          label="RG"
+          label="3"
         />
         <FormControlLabel
           value="4"
-          labelPlacement="top"
+          labelPlacement="bottom"
           control={<Radio />}
-          label="ST"
+          label="4"
         />
         <FormControlLabel
           value="5"
-          labelPlacement="top"
+          labelPlacement="bottom"
           control={<Radio />}
-          label="SS"
+          label={
+            <div className="text-center">
+              <p>5</p>
+              <p>Sangat Setuju</p>
+            </div>
+          }
         />
       </RadioGroup>
     </FormControl>

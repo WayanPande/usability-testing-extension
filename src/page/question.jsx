@@ -44,18 +44,27 @@ const Question = (props) => {
       <h1>{question.title}</h1>
       {!isFinished && (
         <div className="flex items-end justify-between justify-items-end">
-          {isReady && (
-            <Button variant="outlined" onClick={skipHandler}>
-              Skip
-            </Button>
-          )}
           <Button
+            style={
+              isReady ? { visibility: "hidden" } : { visibility: "visible" }
+            }
             variant="contained"
             color={isReady ? "error" : "info"}
             className="rounded-md bg-blue-300 hover:bg-blue-500 py-2 mt-4 font-bold"
             onClick={isReady ? finishHandler : readyHandler}
           >
             {isReady ? "Finish" : "Start"}
+          </Button>
+
+          <Button
+            style={
+              isReady ? { visibility: "visible" } : { visibility: "hidden" }
+            }
+            variant="outlined"
+            className="py-2 mt-4 ml-auto"
+            onClick={skipHandler}
+          >
+            Skip
           </Button>
         </div>
       )}
