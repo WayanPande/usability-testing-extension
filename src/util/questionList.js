@@ -13,7 +13,7 @@ const QuesionList = [
     },
     {
         id: 4,
-        title: "Setelah anda memiliki akun anda baru dapat melakukan pemesanan digital art pada website, kemudian pesanlah sebuah digital art menggunakan model bertipe mozaik!"
+        title: "Setelah anda memiliki sebuah akun, maka barulah anda dapat melakukan pemesanan digital art pada website, kemudian pesanlah sebuah digital art menggunakan model bertipe mozaik!"
     },
     {
         id: 5,

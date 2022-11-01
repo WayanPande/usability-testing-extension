@@ -95,6 +95,19 @@ const counterReducer = (state = { counter: 0, timer: 0, isReady: false, showDial
         }
     }
 
+    if (action.type === 'default') {
+        return {
+            counter: 0,
+            timer: 0,
+            isReady: false,
+            showDialog: false,
+            data: [],
+            page: 0,
+            identity: {},
+            questionnaire: {}
+        }
+    }
+
     if (action.type === 'timer') {
         return {
             counter: state.counter,

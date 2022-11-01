@@ -32,7 +32,7 @@ const Questionnaire = () => {
   };
 
   const uploadData = () => {
-    alert("Pengujian Selesai");
+    alert("Pengujian telah selesai, terimakasih telah berpartisipasi 😊");
     const url =
       "https://script.google.com/macros/s/AKfycbwsCu0S5z0Zu6EZ-ZKkh-uoGlERvpJsITJ11ngjOOdQnRU1V1_AG1ntbGHv7pQozzs/exec";
     let formData = new FormData();
@@ -49,6 +49,7 @@ const Questionnaire = () => {
       .catch((error) => console.error("Error!", error.message));
 
     dispatch({ type: "dialog" });
+    dispatch({ type: "default" });
   };
 
   return (
